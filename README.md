@@ -4,7 +4,17 @@ First you'll have to copy the credentials.h.example file to credentials.h and en
 
 ## The protocol
 
-You can then control the led strip by sending UDP packets with the following format to it:
+You can then control the led strip by sending UDP packets with the following format:
+
+    [packet][packet]...
+
+##### Example:
+
+Set the first driver to magenta:
+
+```java
+byte[] packet = new byte[]{0x0, 0xFF, 0x00, 0xFF, 0xFE};
+```
 
 ### LED-Set packet
 
@@ -19,6 +29,7 @@ This packet will render out the current colors to the strip and thus make change
     [byte: 0b11111110]
 
 As a two's complement integer: -2
+
 As an unsigned integer: 254
 
 ## Timing
