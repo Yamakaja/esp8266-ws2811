@@ -33,15 +33,23 @@ void setup() {
   
   render();
 
+  #ifdef debug
   Serial.begin(115200);
   Serial.print("\nConnecting ");
+  #endif
+  
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
+    #ifdef debug
     Serial.print(".");
+    #endif
   }
+
+  #ifdef debug
   Serial.println(" done!");
   Serial.printf("Connected to %s with %s!\n", ssid, WiFi.localIP().toString().c_str());
+  #endif
   Udp.begin(1234);
 }
 
@@ -53,10 +61,18 @@ void loop() {
   int packetSize = Udp.parsePacket();
   if (packetSize) {
     while (Udp.available() > 0) {
+      
+      #ifdef debug
       Serial.printf("Available: %d\n", Udp.available());
       Serial.printf("peek() = %d\n", Udp.peek());
+      #endif
+      
       if ((uint8_t) Udp.peek() == (uint8_t)254) {
+        
+        #ifdef debug
         Serial.println("Rendering!");
+        #endif
+        
         Udp.read(buff, 1);
         render();
         continue;
@@ -66,7 +82,10 @@ void loop() {
       uint16_t idx = (uint16_t)(*buff);
       uint8_t r = *(buff+1), g = *(buff+2), b = *(buff+3);
       setColorRGB(idx, r, g, b);
+
+      #ifdef debug
       Serial.printf("Set %d to (%d, %d, %d)\n", idx, r, g, b);
+      #endif
     }
   }
 }
