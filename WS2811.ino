@@ -134,14 +134,14 @@ void render() {
     "movi a15, 1;"
     "mov  a12, %3;"
     
-    HIGH_INS
-    LOW_INS
-    NOP_1000
-    NOP_1000
-    NOP_1000
-    NOP_1000
-    NOP_1000
-    
+//    HIGH_INS
+//    LOW_INS
+//    NOP_1000
+//    NOP_1000
+//    NOP_1000
+//    NOP_1000
+//    NOP_1000
+//    
     "nextbyte:"
     "l8ui a13, a12, 0;"
     "movi a14, 8;"

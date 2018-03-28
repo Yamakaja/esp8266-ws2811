@@ -1,3 +1,11 @@
+# Secrets
 credentials.h
+
+# Vim
 *~
 *bin*
+swp/
+
+# PCB
+pcb/*bak
+
