@@ -1,7 +1,14 @@
-0 ::= [250ns](350ns)(650ns)
-1 ::= [250ns][350ns](650ns)
+In theory, timing is specified like this:
+
+0 := [250ns](350ns)(650ns)
+1 := [250ns][350ns](650ns)
 
 [] = high
 () = low
 
-res ::= [50µs]
+res := [50µs]
+
+In pratice, timing is quite lenient, allowing control with just three evently spaced bits:
+
+0 := [x ns](x ns)(x ns)
+1 := [x ns][x ns](x ns)

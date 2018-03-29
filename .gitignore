@@ -1,5 +1,5 @@
 # Secrets
-credentials.h
+include/user_config.h
 
 # Vim
 *~
@@ -9,3 +9,7 @@ swp/
 # PCB
 pcb/*bak
 
+# Binaries
+esp8266-ws2811
+esp8266-ws2811-*.bin
+obj/*.o
