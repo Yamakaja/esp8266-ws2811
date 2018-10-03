@@ -26,7 +26,7 @@ esp8266-ws2811-0x00000.bin: esp8266-ws2811
 	esptool.py elf2image $^
 
 flash: esp8266-ws2811-0x00000.bin
-	esptool.py --port $(PORT) write_flash 0 esp8266-ws2811-0x00000.bin 0x10000 esp8266-ws2811-0x10000.bin
+	esptool.py --port $(PORT) write_flash -fs 32m -ff 40m -fm dout 0 esp8266-ws2811-0x00000.bin 0x10000 esp8266-ws2811-0x10000.bin
 
 .PHONY: clean
 

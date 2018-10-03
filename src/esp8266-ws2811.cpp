@@ -9,8 +9,8 @@ extern "C" {
 #include "ws2812_i2c.h"
 
 namespace {
-    const char *ssid = SSID;
-    const char *psk = PSK;
+    const char ssid[] = SSID;
+    const char psk[] = PSK;
 
     esp_udp udp;
     espconn connection;
@@ -23,8 +23,8 @@ void ICACHE_FLASH_ATTR setupWiFi() {
 
     config.bssid_set = 0;
 
-    os_memcpy(&config.ssid, ssid, 12);
-    os_memcpy(&config.password, psk, 17);
+    os_memcpy(&config.ssid, ssid, sizeof(ssid));
+    os_memcpy(&config.password, psk, sizeof(psk));
     os_printf("wifi_station_set_config() -> %d\n", wifi_station_set_config(&config));
 
     wifi_station_set_auto_connect(true);
